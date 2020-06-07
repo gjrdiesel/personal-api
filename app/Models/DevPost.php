@@ -7,12 +7,12 @@ use Illuminate\Support\Facades\Http;
 
 class DevPost extends Model
 {
-    function getApiUrl($id = '')
+    public function getApiUrl($id = '')
     {
         return "https://dev.to/api/articles/{$id}?username=" . config('posts.dev.username');
     }
 
-    function fetch()
+    public function fetch()
     {
         collect(Http::get($this->getApiUrl())->json())
             ->each(function ($post) {

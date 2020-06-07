@@ -8,7 +8,7 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 class MarkdownPost extends Model
 {
-    function fetch()
+    public function fetch()
     {
         collect(glob(resource_path('posts') . '/*.md'))
             ->map('file_get_contents')
@@ -40,7 +40,6 @@ class MarkdownPost extends Model
                     }
                     Post::create($fields);
                 }
-
             });
     }
 }

@@ -18,7 +18,7 @@ before_script:
   - npm install
 
 script:
-  - phpcs
+  - phpcs app
   - jshint resources/assets/js/modules/*
   - vendor/bin/phpunit --coverage-text
   - npm run production
