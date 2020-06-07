@@ -14,11 +14,11 @@ before_script:
   - phpenv rehash
   - nvm install 12
   - npm install npm@latest -g
-  - npm install -g jshint
+  - npm install -g eslintnpm
   - npm install
 
 script:
   - phpcs app
-  - jshint resources/assets/js/modules/*
+  - eslint resources/js --max-warnings=-1 --ext .js,.vue
   - vendor/bin/phpunit --coverage-text
   - npm run production
