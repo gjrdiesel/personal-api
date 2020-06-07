@@ -1,0 +1,24 @@
+os:
+  - linux
+
+language: php
+
+php:
+  - '7.4'
+
+before_script:
+  - composer self-update
+  - composer install --no-interaction
+  - cp .env.example .env
+  - pear install pear/PHP_CodeSniffer
+  - phpenv rehash
+  - nvm install 12
+  - npm install npm@latest -g
+  - npm install -g jshint
+  - npm install
+
+script:
+  - phpcs
+  - jshint resources/assets/js/modules/*
+  - vendor/bin/phpunit --coverage-text
+  - npm run production
